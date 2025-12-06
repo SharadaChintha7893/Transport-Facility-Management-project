@@ -1,0 +1,52 @@
+<div class="card shadow-sm">
+  <div class="card-header">
+    <h5 class="mb-0">Add New Ride (Today only)</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label">Owner Employee ID</label>
+          <input formControlName="ownerEmployeeId" class="form-control" />
+        </div>
+        <div class="col-md-6">
+          <label class="form-label">Vehicle Type</label>
+          <select formControlName="vehicleType" class="form-select">
+            <option>Car</option>
+            <option>Bike</option>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Vehicle No</label>
+          <input formControlName="vehicleNo" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Vacant Seats</label>
+          <input type="number" formControlName="vacantSeats" class="form-control" min="1" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Time (HH:mm) — Today only</label>
+          <input type="time" formControlName="timeISO" class="form-control" />
+        </div>
+
+        <div class="col-md-6">
+          <label class="form-label">Pickup Point</label>
+          <input formControlName="pickupPoint" class="form-control" />
+        </div>
+
+        <div class="col-12">
+          <label class="form-label">Destination</label>
+          <input formControlName="destination" class="form-control" />
+        </div>
+
+        <div class="col-12 text-end">
+          <div class="text-danger mb-2" *ngIf="error">{{ error }}</div>
+          <button class="btn btn-primary" type="submit">Add Ride</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

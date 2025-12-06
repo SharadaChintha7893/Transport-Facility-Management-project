@@ -1,0 +1,19 @@
+<div *ngIf="ride; else notFound" class="card">
+  <div class="card-body">
+    <h5 class="card-title">Book Ride — {{ ride.ownerEmployeeId }} ({{ ride.vehicleType }})</h5>
+    <p class="card-text">{{ ride.pickupPoint }} → {{ ride.destination }} at {{ ride.timeISO | date:'shortTime' }}</p>
+    <p>Vacant Seats: <strong>{{ ride.vacantSeats }}</strong></p>
+
+    <div class="mb-2">
+      <label>Employee ID</label>
+      <input class="form-control" [(ngModel)]="employeeId" />
+    </div>
+    <div class="text-danger mb-2">{{ message }}</div>
+    <button class="btn btn-primary" (click)="book()">Book</button>
+    <a class="btn btn-link" routerLink="/">Cancel</a>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="alert alert-warning">Ride not found</div>
+</ng-template>
