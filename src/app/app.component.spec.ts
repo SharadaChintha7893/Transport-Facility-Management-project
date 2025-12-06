@@ -21,19 +21,4 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'transport-facility-management'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('transport-facility-management');
-  });
-
-  it('should render title in the container element', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-
-    // pick the main content container where {{ title }} is rendered
-    const mainContainer = compiled.querySelector('.container.mt-4');
-    expect(mainContainer?.textContent).toContain('transport-facility-management');
-  });
 });

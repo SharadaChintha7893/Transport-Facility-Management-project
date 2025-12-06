@@ -8,7 +8,11 @@
         <div class="col-md-6">
           <label class="form-label">Owner Employee ID</label>
           <input formControlName="ownerEmployeeId" class="form-control" />
+          <div *ngIf="f['ownerEmployeeId'].touched && f['ownerEmployeeId'].invalid" class="text-danger small">
+            Owner ID is required (3-12 chars).
+          </div>
         </div>
+
         <div class="col-md-6">
           <label class="form-label">Vehicle Type</label>
           <select formControlName="vehicleType" class="form-select">
@@ -20,31 +24,46 @@
         <div class="col-md-6">
           <label class="form-label">Vehicle No</label>
           <input formControlName="vehicleNo" class="form-control" />
+          <div *ngIf="f['vehicleNo'].touched && f['vehicleNo'].invalid" class="text-danger small">
+            Enter a valid vehicle number.
+          </div>
         </div>
 
         <div class="col-md-6">
           <label class="form-label">Vacant Seats</label>
           <input type="number" formControlName="vacantSeats" class="form-control" min="1" />
+          <div *ngIf="f['vacantSeats'].touched && f['vacantSeats'].invalid" class="text-danger small">
+            Vacant seats must be between 1 and 10.
+          </div>
         </div>
 
         <div class="col-md-6">
           <label class="form-label">Time (HH:mm) — Today only</label>
           <input type="time" formControlName="timeISO" class="form-control" />
+          <div *ngIf="f['timeISO'].touched && f['timeISO'].invalid" class="text-danger small">
+            Time is required.
+          </div>
         </div>
 
         <div class="col-md-6">
           <label class="form-label">Pickup Point</label>
           <input formControlName="pickupPoint" class="form-control" />
+          <div *ngIf="f['pickupPoint'].touched && f['pickupPoint'].invalid" class="text-danger small">
+            Pickup point is required.
+          </div>
         </div>
 
         <div class="col-12">
           <label class="form-label">Destination</label>
           <input formControlName="destination" class="form-control" />
+          <div *ngIf="f['destination'].touched && f['destination'].invalid" class="text-danger small">
+            Destination is required.
+          </div>
         </div>
 
         <div class="col-12 text-end">
           <div class="text-danger mb-2" *ngIf="error">{{ error }}</div>
-          <button class="btn btn-primary" type="submit">Add Ride</button>
+          <button class="btn btn-primary" type="submit" [disabled]="form.invalid">Add Ride</button>
         </div>
       </div>
     </form>
