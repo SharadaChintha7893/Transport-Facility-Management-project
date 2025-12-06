@@ -1,16 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/header/header.component';
+
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
+        RouterTestingModule,
+        HeaderComponent
       ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [AppComponent],
     }).compileComponents();
   });
 
@@ -26,10 +27,13 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('transport-facility-management');
   });
 
-  it('should render title', () => {
+  it('should render title in the container element', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, transport-facility-management');
+
+    // pick the main content container where {{ title }} is rendered
+    const mainContainer = compiled.querySelector('.container.mt-4');
+    expect(mainContainer?.textContent).toContain('transport-facility-management');
   });
 });
